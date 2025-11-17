@@ -1,11 +1,12 @@
 import { CatalogClient } from "./CatalogClient";
 
 interface CatalogPageProps {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 }
 
-export default function CatalogPage({ searchParams }: CatalogPageProps) {
-  const category = searchParams.category ?? "all";
+export default async function CatalogPage({ searchParams }: CatalogPageProps) {
+  const params = await searchParams;
+  const category = params.category ?? "all";
 
   return <CatalogClient category={category} />;
 }
