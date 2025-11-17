@@ -92,12 +92,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   if (!loading && (!product || error)) {
-    // En este punto loading es false y product no es null
-  if (!product) {
-    return null;
-  }
-
-  return (
+    return (
       <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top,#020617_0,#020617_40%,#000_100%)] text-slate-100">
         <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-6 px-6 py-10 md:px-10">
           <header className="flex items-center justify-between gap-4">
@@ -143,6 +138,11 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
       </div>
     );
+  }
+
+  // En este punto loading es false, no hay error y product no es null
+  if (!product) {
+    return null;
   }
 
   return (
