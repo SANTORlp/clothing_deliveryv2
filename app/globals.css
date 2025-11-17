@@ -4,11 +4,11 @@
   --background: radial-gradient(circle at top, #020617 0, #020617 40%, #000000 100%);
   --foreground: #f9fafb; /* blanco suave */
   --accent-primary: #ffffff; /* acento principal blanco */
-  --accent-secondary: #38bdf8; /* azul neón muy sutil */
-  --accent-danger: #f97373;
-  --card-bg: rgba(15, 23, 42, 0.94); /* casi negro */
-  --card-border: rgba(248, 250, 252, 0.12); /* borde blanco muy suave */
-  --chip-bg: rgba(15, 23, 42, 0.96);
+  --accent-secondary: #f9fafb; /* brillo blanco sutil */
+  --accent-danger: #fca5a5;
+  --card-bg: rgba(15, 23, 42, 0.96); /* casi negro */
+  --card-border: rgba(249, 250, 251, 0.18); /* borde blanco suave */
+  --chip-bg: rgba(15, 23, 42, 0.98);
 }
 
 @theme inline {
@@ -36,7 +36,7 @@ body {
 }
 
 .neon-border {
-  border-image: linear-gradient(135deg, #22d3ee, #a855f7) 1;
+  border-image: linear-gradient(135deg, #ffffff, #e5e7eb) 1;
 }
 
 .glass-panel {

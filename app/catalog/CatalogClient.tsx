@@ -106,16 +106,16 @@ export function CatalogClient({ category }: CatalogClientProps) {
           {!loading && !error && (
             <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredProducts.map((product) => (
-              <article
-                key={product.id}
-                className="glass-panel flex flex-col justify-between rounded-3xl p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-400/70"
-              >
+                <article
+                  key={product.id}
+                  className="glass-panel flex flex-col justify-between rounded-3xl p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-slate-200/70"
+                >
                 <div className="flex flex-col gap-2">
                   <div className="inline-flex items-center gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.18em] text-slate-400">
                       {product.type}
                     </span>
-                    <span className="h-1 w-6 rounded-full bg-gradient-to-r from-slate-100 to-slate-500" />
+                    <span className="h-1 w-6 rounded-full bg-gradient-to-r from-slate-50 to-slate-500" />
                   </div>
                   <h2 className="text-sm font-semibold text-slate-50 md:text-base">
                     {product.name}
@@ -126,7 +126,7 @@ export function CatalogClient({ category }: CatalogClientProps) {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between text-[0.78rem] text-slate-300">
-                  <span className="rounded-full bg-slate-900/80 px-2 py-1 text-[0.7rem] text-emerald-300">
+                  <span className="rounded-full bg-slate-900/80 px-2 py-1 text-[0.7rem] text-slate-100">
                     {product.eta}
                   </span>
                   <span className="text-xs font-semibold text-slate-100">

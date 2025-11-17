@@ -44,14 +44,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top,#050816_0,#020617_40%,#000_100%)] text-slate-100">
+    <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top,#020617_0,#020617_40%,#000_100%)] text-slate-100">
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-8 md:px-10 md:py-12">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-64 max-w-3xl bg-[radial-gradient(circle_at_top,#22d3ee33_0,transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-64 max-w-3xl bg-[radial-gradient(circle_at_top,rgba(249,250,251,0.18)_0,transparent_60%)]" />
 
         {/* NAVBAR */}
         <header className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-slate-700 bg-slate-900/60 shadow-[0_0_25px_rgba(34,211,238,0.45)]">
+            <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-slate-700 bg-slate-900/60 shadow-[0_0_22px_rgba(248,250,252,0.35)]">
               <Image
                 src="/cs-logo.png"
                 alt="Clothing Store logo"
@@ -87,7 +87,7 @@ export default function Home() {
             >
               Callejera
             </Link>
-            <button className="rounded-full border border-cyan-400/60 bg-cyan-500/10 px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cyan-100 shadow-[0_0_25px_rgba(34,211,238,0.55)] hover:bg-cyan-500/20">
+            <button className="rounded-full border border-slate-200/70 bg-slate-50/5 px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-100 shadow-[0_0_22px_rgba(249,250,251,0.35)] hover:bg-slate-50/10">
               Track Pedido
             </button>
           </nav>
@@ -96,14 +96,14 @@ export default function Home() {
         {/* HERO */}
         <main className="flex flex-1 flex-col gap-10 md:flex-row md:items-stretch">
           <section className="flex flex-1 flex-col justify-center gap-6">
-            <div className="inline-flex max-w-max items-center gap-2 rounded-full border border-slate-700 bg-slate-900/50 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-slate-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.9)]" />
+            <div className="inline-flex max-w-max items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-slate-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-slate-100 shadow-[0_0_10px_rgba(248,250,252,0.9)]" />
               Delivery activo en tu zona
             </div>
 
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl md:text-6xl">
               Delivery de ropa
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-slate-100">
                 {" "}
                 elegante & callejera
               </span>
@@ -120,9 +120,9 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/catalog"
-                className="glass-panel flex items-center gap-3 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-100 shadow-[0_18px_60px_rgba(15,23,42,0.9)]"
+                className="glass-panel flex items-center gap-3 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-100 shadow-[0_18px_40px_rgba(15,23,42,0.9)]"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-[0.65rem] font-bold text-slate-950">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-[0.65rem] font-bold text-slate-950">
                   Go
                 </span>
                 Explorar catálogo
@@ -130,7 +130,7 @@ export default function Home() {
 
               <Link
                 href="/catalog"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-4 py-2 text-[0.7rem] uppercase tracking-[0.2em] text-slate-300 hover:border-cyan-400/80"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-4 py-2 text-[0.7rem] uppercase tracking-[0.2em] text-slate-300 hover:border-slate-200/80"
               >
                 Ver outfits curados
               </Link>
@@ -138,15 +138,15 @@ export default function Home() {
 
             <div className="mt-3 flex flex-wrap gap-3 text-[0.7rem] text-slate-400">
               <div className="chip flex items-center gap-2 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-100" />
                 Entrega promedio 32 min
               </div>
               <div className="chip flex items-center gap-2 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
                 Fits premium seleccionados
               </div>
               <div className="chip flex items-center gap-2 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 Elegante • Callejera • Híbrida
               </div>
             </div>
@@ -154,9 +154,9 @@ export default function Home() {
 
           {/* PANEL DERECHA: GRID */}
           <aside className="mt-4 flex flex-1 flex-col gap-4 md:mt-0">
-            <div className="glass-panel relative flex flex-1 flex-col overflow-hidden rounded-3xl p-4 shadow-[0_25px_80px_rgba(15,23,42,0.9)]">
-              <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,#22d3ee55_0,transparent_60%)]" />
-              <div className="absolute -bottom-32 -left-16 h-60 w-60 rounded-full bg-[radial-gradient(circle,#a855f755_0,transparent_60%)]" />
+            <div className="glass-panel relative flex flex-1 flex-col overflow-hidden rounded-3xl p-4 shadow-[0_25px_60px_rgba(15,23,42,0.9)]">
+              <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(248,250,252,0.2)_0,transparent_60%)]" />
+              <div className="absolute -bottom-32 -left-16 h-60 w-60 rounded-full bg-[radial-gradient(circle,rgba(148,163,184,0.2)_0,transparent_60%)]" />
 
               <div className="relative flex items-center justify-between gap-4 pb-2">
                 <div>
@@ -166,7 +166,7 @@ export default function Home() {
                   <p className="text-sm text-slate-400">Combina elegante + street en un solo pedido.</p>
                 </div>
                 <div className="chip flex items-center gap-2 px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-slate-200">
-                  <span className="h-1.5 w-6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-400" />
+                  <span className="h-1.5 w-6 rounded-full bg-gradient-to-r from-slate-50 to-slate-400" />
                   Noche activa
                 </div>
               </div>
@@ -200,23 +200,23 @@ export default function Home() {
                         </p>
                       </div>
                       <div className="flex flex-col items-end gap-1 text-right">
-                        <span className="rounded-full bg-slate-900/80 px-2 py-1 text-[0.65rem] text-emerald-300">
+                        <span className="rounded-full bg-slate-900/80 px-2 py-1 text-[0.65rem] text-slate-100">
                           {product.eta}
                         </span>
-                        <span className="text-xs font-semibold text-cyan-200">
-                          {product.price}
-                        </span>
                       </div>
+                      <span className="text-xs font-semibold text-slate-100">
+                        {product.price}
+                      </span>
                     </div>
 
                     <button
-                      className="mt-3 inline-flex items-center justify-between rounded-full border border-slate-700 bg-slate-900/80 px-3 py-2 text-[0.7rem] font-medium text-slate-200 hover:border-cyan-400/80"
+                      className="mt-3 inline-flex items-center justify-between rounded-full border border-slate-700 bg-slate-900/80 px-3 py-2 text-[0.7rem] font-medium text-slate-200 hover:border-slate-200/80"
                       onClick={() =>
                         addItem({ id: product.id, name: product.name, price: product.price })
                       }
                     >
                       <span>Añadir al pedido</span>
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-[0.65rem] font-bold text-slate-950">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-[0.65rem] font-bold text-slate-950">
                         +
                       </span>
                     </button>
@@ -228,7 +228,7 @@ export default function Home() {
             <div className="flex flex-col gap-3 rounded-3xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-[0.7rem] text-slate-300">
               <div className="flex items-center justify-between">
                 <span className="uppercase tracking-[0.22em] text-slate-400">Resumen express</span>
-                <span className="rounded-full bg-emerald-500/20 px-2 py-1 text-[0.65rem] font-semibold text-emerald-300">
+                <span className="rounded-full bg-slate-100/10 px-2 py-1 text-[0.65rem] font-semibold text-slate-100">
                   {totalItems} prenda{totalItems === 1 ? "" : "s"} • ${totalPrice}
                 </span>
               </div>
@@ -239,7 +239,7 @@ export default function Home() {
               <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
               <Link
                 href="/checkout"
-                className="w-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 py-2 text-center text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-slate-950 shadow-[0_18px_45px_rgba(34,211,238,0.55)]"
+                className="w-full rounded-full bg-slate-100 py-2 text-center text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-slate-950 shadow-[0_18px_35px_rgba(15,23,42,0.85)]"
               >
                 Continuar al checkout
               </Link>
