@@ -145,6 +145,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     return null;
   }
 
+  const p = product as ProductFromApi;
+
   return (
     <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top,#020617_0,#020617_40%,#000_100%)] text-slate-100">
       <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 px-6 py-10 md:px-10">
@@ -181,15 +183,15 @@ export default function ProductPage({ params }: ProductPageProps) {
               <div className="flex flex-col gap-3">
                 <div className="inline-flex items-center gap-2">
                   <span className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
-                    {product.type}
+                    {p.type}
                   </span>
                   <span className="h-1 w-10 rounded-full bg-gradient-to-r from-slate-100 to-slate-500" />
                 </div>
                 <h1 className="text-2xl font-semibold tracking-tight text-slate-50 md:text-3xl">
-                  {product.name}
+                  {p.name}
                 </h1>
                 <p className="text-sm leading-relaxed text-slate-400">
-                  {product.description}
+                  {p.description}
                 </p>
               </div>
 
@@ -199,7 +201,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     Entrega estimada
                   </span>
                   <span className="rounded-full bg-slate-900/80 px-3 py-1 text-[0.75rem] text-emerald-300">
-                    {product.eta}
+                    {p.eta}
                   </span>
                 </div>
                 <div className="flex flex-col items-end gap-1">
@@ -207,7 +209,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     Precio
                   </span>
                   <span className="text-lg font-semibold text-slate-50">
-                    {product.price}
+                    {p.price}
                   </span>
                 </div>
               </div>
@@ -221,7 +223,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   <button
                     className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-slate-100 hover:border-white/80"
                     onClick={() =>
-                      addItem({ id: product.id, name: product.name, price: product.price })
+                      addItem({ id: p.id, name: p.name, price: p.price })
                     }
                   >
                     Añadir al pedido
