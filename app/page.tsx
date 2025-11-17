@@ -3,44 +3,45 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "./cart-context";
+import { useEffect, useState } from "react";
 
-const products = [
-  {
-    id: "elegant-01",
-    name: "Blazer Noir LXRY",
-    type: "Elegante",
-    description: "Corte slim, tela italiana, detalles metálicos minimal.",
-    eta: "25-35 min",
-    price: "$89",
-  },
-  {
-    id: "street-01",
-    name: "Hoodie Neon Skyline",
-    type: "Callejera",
-    description: "Algodón premium, estampado glow-in-the-dark.",
-    eta: "20-30 min",
-    price: "$59",
-  },
-  {
-    id: "elegant-02",
-    name: "Pantalón Tailored Midnight",
-    type: "Elegante",
-    description: "Silhouette tapered, listo para after-office nocturno.",
-    eta: "30-40 min",
-    price: "$72",
-  },
-  {
-    id: "street-02",
-    name: "Zapatillas StreetPulse X",
-    type: "Callejera",
-    description: "Suela chunky, líneas futuristas y detalles neón.",
-    eta: "35-45 min",
-    price: "$110",
-  },
-];
+type ProductFromApi = {
+  _id?: string;
+  id: string;
+  name: string;
+  type: string;
+  description: string;
+  eta: string;
+  price: string;
+};
 
 export default function Home() {
   const { addItem, totalItems, totalPrice } = useCart();
+  const [products, setProducts] = useState<ProductFromApi[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch("/api/products");
+        if (!res.ok) {
+          throw new Error("No se pudieron cargar los productos");
+        }
+        const data = (await res.json()) as ProductFromApi[];
+        setProducts(data);
+      } catch (err) {
+        console.error(err);
+        setError("Error al cargar productos");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
 
   return (
     <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top,#050816_0,#020617_40%,#000_100%)] text-slate-100">
@@ -171,7 +172,14 @@ export default function Home() {
               </div>
 
               <div className="relative mt-3 grid flex-1 grid-cols-1 gap-3 sm:grid-cols-2">
-                {products.map((product) => (
+                {loading && (
+                  <p className="text-sm text-slate-400">Cargando productos...</p>
+                )}
+                {error && !loading && (
+                  <p className="text-sm text-rose-400">{error}</p>
+                )}
+                {!loading && !error &&
+                  products.map((product) => (
                   <article
                     key={product.id}
                     className="group flex flex-col justify-between rounded-2xl border border-slate-700/70 bg-slate-900/60 p-3 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-400/70"
@@ -213,7 +221,7 @@ export default function Home() {
                       </span>
                     </button>
                   </article>
-                ))}
+                  ))}
               </div>
             </div>
 

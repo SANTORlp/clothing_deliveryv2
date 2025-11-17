@@ -3,41 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "../cart-context";
+import { useEffect, useState } from "react";
 
-const products = [
-  {
-    id: "elegant-01",
-    name: "Blazer Noir LXRY",
-    type: "Elegante",
-    description: "Corte slim, tela italiana, detalles metálicos minimal.",
-    eta: "25-35 min",
-    price: "$89",
-  },
-  {
-    id: "street-01",
-    name: "Hoodie Neon Skyline",
-    type: "Callejera",
-    description: "Algodón premium, estampado glow-in-the-dark.",
-    eta: "20-30 min",
-    price: "$59",
-  },
-  {
-    id: "elegant-02",
-    name: "Pantalón Tailored Midnight",
-    type: "Elegante",
-    description: "Silhouette tapered, listo para after-office nocturno.",
-    eta: "30-40 min",
-    price: "$72",
-  },
-  {
-    id: "street-02",
-    name: "Zapatillas StreetPulse X",
-    type: "Callejera",
-    description: "Suela chunky, líneas futuristas y detalles neón.",
-    eta: "35-45 min",
-    price: "$110",
-  },
-];
+type ProductFromApi = {
+  _id?: string;
+  id: string;
+  name: string;
+  type: string;
+  description: string;
+  eta: string;
+  price: string;
+};
 
 interface CatalogClientProps {
   category: string;
@@ -45,6 +21,32 @@ interface CatalogClientProps {
 
 export function CatalogClient({ category }: CatalogClientProps) {
   const { addItem } = useCart();
+
+  const [products, setProducts] = useState<ProductFromApi[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch("/api/products");
+        if (!res.ok) {
+          throw new Error("No se pudieron cargar los productos");
+        }
+        const data = (await res.json()) as ProductFromApi[];
+        setProducts(data);
+      } catch (err) {
+        console.error(err);
+        setError("Error al cargar productos");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
 
   const filteredProducts = products.filter((product) => {
     if (category === "elegant") return product.type === "Elegante";
@@ -88,13 +90,22 @@ export function CatalogClient({ category }: CatalogClientProps) {
               Catálogo de prendas
             </h1>
             <p className="max-w-xl text-sm text-slate-400">
-              Elige piezas elegantes, callejeras o híbridas. Más adelante conectaremos este
-              catálogo a MongoDB para que todo venga desde la base de datos.
+              Elige piezas elegantes, callejeras o híbridas. Estos productos vienen ahora desde
+              tu base de datos en MongoDB.
             </p>
           </div>
 
-          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredProducts.map((product) => (
+          {loading && (
+            <p className="text-sm text-slate-400">Cargando productos...</p>
+          )}
+
+          {error && !loading && (
+            <p className="text-sm text-rose-400">{error}</p>
+          )}
+
+          {!loading && !error && (
+            <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredProducts.map((product) => (
               <article
                 key={product.id}
                 className="glass-panel flex flex-col justify-between rounded-3xl p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-400/70"
@@ -140,8 +151,9 @@ export function CatalogClient({ category }: CatalogClientProps) {
                   </Link>
                 </div>
               </article>
-            ))}
-          </section>
+              ))}
+            </section>
+          )}
         </main>
       </div>
     </div>
